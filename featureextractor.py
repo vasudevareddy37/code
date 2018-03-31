@@ -23,28 +23,28 @@ for i in range (0, L):
     base_filename = filename[i]
     name = os.path.join(inputFolder, base_filename)
     #print(base_filename[5])
-    if base_filename[5] == 'A':
+    if base_filename[0:2] == 'an':
         #labels = np.r_[labels, 1]
-        labels[i] = 0
+        labels[i] = 1
     
-    elif base_filename[5] == 'E':
+    elif base_filename[0:2] == 'di':
         #labels = np.r_[labels, 2]
-        labels[i] = 0
-    elif base_filename[5] == 'F':
+        labels[i] = 2
+    elif base_filename[0:2] == 'fe':
         #labels = np.r_[labels, 3]
-        labels[i] = 1
-    elif base_filename[5] == 'L':
+        labels[i] = 3
+    elif base_filename[0:2] == 'ha':
         #labels = np.r_[labels, 4]
-        labels[i] = 0
-    elif base_filename[5] == 'N':
+        labels[i] = 4
+    elif base_filename[0:2] == 'sa':
         #labels = np.r_[labels, 5]
-        labels[i] = 1
-    elif base_filename[5] == 'T':
+        labels[i] = 5
+    #elif base_filename[5] == 'T':
         #labels = np.r_[labels, 6]
-        labels[i] = 0
+        #labels[i] = 0
     else:
         #labels = np.r_[labels, 7]
-        labels[i] = 0
+        labels[i] = 6
     
  
 
