@@ -2,11 +2,8 @@ import numpy as np
 import cv2 as cv
 from matplotlib import pyplot as plt
 
-<<<<<<< HEAD
 img = cv.imread('03a01Fa.png',0)
-=======
 img = cv.imread('digit_0.png', 0)
->>>>>>> 47cf629be065b3f00718e11cb0836537c9df2f59
 
 laplacian = cv.Laplacian(img,cv.CV_64F)
 sobelx = cv.Sobel(img,cv.CV_64F,1,0,ksize=5)
