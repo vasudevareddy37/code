@@ -13,7 +13,9 @@ start = timeit.default_timer()
 X = np.load('/home/mainampati/spectro_db/XS_original_V.npy')
 y = np.load('/home/mainampati/spectro_db/yS_V.npy')
 
-X_scaled = X / 256
+
+X_scaled = X / 255
+
 print(len(y))
 print("number of keyponts considerd...." + str(
     X_scaled.shape[1] / 32))

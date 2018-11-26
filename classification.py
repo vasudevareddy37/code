@@ -11,16 +11,19 @@ start = timeit.default_timer()
 X = np.load('/home/mainampati/speech_framework/X_original_A.npy')
 y = np.load('/home/mainampati/speech_framework/y_A.npy')
 
-X_scaled = X / 256
+X_scaled = X / 255
 print("number of keyponts considerd...." + str(
     X_scaled.shape[1] / 32))
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X_scaled, y, test_size=0.25, random_state=42)
+    X_scaled, y, test_size=0.3, random_state=4)
 
-print"shape of training vector array : %r and train-label array shape : %r" %(X_train.shape, y_train.shape)
+print"shape of training vector array : %r and train-label array shape : %r" %(
+    X_train.shape, y_train.shape)
 
-print"shape of test vector array: %r and test-label array shape : %r" %(X_test.shape, y_test.shape)
+print"shape of test vector array: %r and test-label array shape : %r" %(
+    X_test.shape, y_test.shape)
+       
 print "train and test split percentages are.. %s & %s  "  %(
     ((float(X_train.shape[0]) / X_scaled.shape[0])* 100.0), (
         (float(X_test.shape[0]) / X_scaled.shape[0])* 100.0))

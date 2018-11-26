@@ -4,7 +4,7 @@ import numpy as np
 # import timeit
 
 
-inputFolder = '/home/mainampati/thesis/spectro_db/Bemodb'
+inputFolder = '/home/mainampati/thesis/Emo_db'
 suffix = '.png'
 
 filename  = os.listdir(inputFolder)
@@ -46,4 +46,4 @@ for i in range (0, L):
 
 y = np.copy(labels)
 
-np.save('/home/mainampati/thesis/Labels/y_berlin.npy', y)
+np.save('/home/mainampati/thesis/y_berlin_o.npy', y)

@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split, LeaveOneOut
 from sklearn import svm
@@ -13,7 +13,7 @@ start = timeit.default_timer()
 X = np.load('/home/mainampati/spectro_db/XE_original_VA.npy')
 y = np.load('/home/mainampati/spectro_db/yE_VA.npy')
 
-X_scaled = X / 256
+X_scaled = X / 255
 
 print("number of keyponts considerd...." + str(
     X_scaled.shape[1] / 32))
