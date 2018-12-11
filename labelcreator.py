@@ -4,7 +4,7 @@ import numpy as np
 # import timeit
 
 
-inputFolder = '/home/mainampati/thesis/Emo_db'
+inputFolder = '/home/mainampati/thesis/emo_db/spectro_db0'
 suffix = '.png'
 
 filename  = os.listdir(inputFolder)
@@ -19,31 +19,33 @@ for i in range (0, L):
     #name = os.path.join(inputFolder, base_filename)
     #print(base_filename[5])
     if base_filename[5] == 'A':
-        #labels = np.r_[labels, 1]
         labels[i] = 1
+        #labels[i] = 1
     
     elif base_filename[5] == 'E':
-        #labels = np.r_[labels, 2]
-        labels[i] = 2
+        labels[i] = 0 
+        #labels[i] = 2
     elif base_filename[5] == 'F':
-        #labels = np.r_[labels, 3]
-        labels[i] = 3
+        labels[i] = 1
+        # labels[i] = 3
     elif base_filename[5] == 'L':
-        #labels = np.r_[labels, 4]
-        labels[i] = 4
+        labels[i] = 0
+        #labels[i] = 4
     elif base_filename[5] == 'N':
-        #labels = np.r_[labels, 5]
-        labels[i] = 5
+        labels[i] = 1
+        #labels[i] = 5
     elif base_filename[5] == 'T':
-        #labels = np.r_[labels, 6]
-        labels[i] = 6
+        labels[i] = 0
+        #labels[i] = 6
     elif base_filename[5] == 'W':
-        #labels = np.r_[labels, 6]
-        labels[i] = 7
+        labels[i] = 1
+        #labels[i] = 7
     else:
-        #labels = np.r_[labels, 7]
+        
         print "problem with the file %s " % base_filename
 
 y = np.copy(labels)
 
-np.save('/home/mainampati/thesis/y_berlin_o.npy', y)
+outName = inputFolder + 'Re' + '/emodbArousal.npy'
+
+np.save(outName, y)

@@ -4,7 +4,7 @@ import numpy as np
 # import timeit
 
 
-inputFolder = '/home/mainampati/thesis/Emo_db'
+inputFolder = '/home/mainampati/thesis/emo_db/spectro_db0'
 suffix = '.png'
 
 filename  = os.listdir(inputFolder)
@@ -55,4 +55,13 @@ for i in range (0, L):
 
 g = np.copy(group)
 
-np.save('/home/mainampati/thesis/group.npy', g)
+outName = inputFolder + 'Re' + '/gruop.npy'
+
+np.save(outName, g)
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@ import timeit
 
 start = timeit.default_timer()
 
-inputFolder = '/home/mainampati/thesis/Emo_db/'
+inputFolder = '/home/mainampati/thesis/emo_db/spectro_db0'
 suffix = '.png'
 filename  = os.listdir(inputFolder)
 
@@ -14,7 +14,7 @@ filename  = os.listdir(inputFolder)
 # you will get maxnNo_keypoints from maxKeypoints.py file
 maxNo_keypoints = 391
 
-features = []
+#features = []
 final_features = np.zeros((1, maxNo_keypoints*32))
 
 L = len(filename)
@@ -52,7 +52,7 @@ for i in range (0, L):
 
 X_orginal = np.copy(final_features[1:, :])
 
-np.save('/home/mainampati/thesis/X_original_o', X_orginal)
+np.save('/home/mainampati/thesis/emo_db/spectro_db0E', X_orginal)
 
 #X_norm = np.linalg.norm(X_orginal, axis= 1, keepdims= True)
 #X_scaled1 = X_orginal / X_norm

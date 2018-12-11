@@ -6,7 +6,7 @@ import timeit
 
 start = timeit.default_timer()
 
-inputFolder = '/home/mainampati/thesis/emodbupd/0a'
+inputFolder = '/home/mainampati/thesis/emo_db/spectro_db3'
 suffix = '.png'
 filename = os.listdir(inputFolder)
 features = []
@@ -16,13 +16,14 @@ for i in range(0, L):
     name = os.path.join(inputFolder, base_filename)
 
     img = cv.imread(name, 0)
-    # Initiate ORB detector
-    orb = cv.ORB_create()
-    #orb.setMaxFeatures(200)
-    # find the keypoints with ORB
-    kp = orb.detect(img, None)
-    # compute the descriptors with ORB
-    kp, des = orb.compute(img, kp)
+    # Initiate FAST detector
+    star = cv.xfeatures2d.StarDetector_create()
+    # Initiate BRIEF extractor
+    brief = cv.xfeatures2d.BriefDescriptorExtractor_create()
+    # find the keypoints with STAR
+    kp = star.detect(img,None)
+    # compute the descriptors with BRIEF
+    kp, des = brief.compute(img, kp)
     features.append(des.shape[0])
 # finding the min features length in database
 # to get same length vector to train the svm

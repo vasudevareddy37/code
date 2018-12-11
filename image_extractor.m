@@ -1,7 +1,7 @@
 close all, clear all, clc;
 
-database_folder = '/home/mainampati/speech_framework/wavdb';
-imageOutDB_folder = '/home/mainampati/speech_framework/imagedb';
+database_folder = '/home/mainampati/thesis/emo_db/wavdb';
+imageOutDB_folder = '/home/mainampati/thesis/emodbupd/5c';
 filePattern = fullfile(database_folder, '*.wav');
 theFiles = dir(filePattern);
 for k = 1 : length(theFiles)
@@ -12,8 +12,8 @@ for k = 1 : length(theFiles)
   imageOutFN =  imageOutFname(1:end - 4);
   [x, Fs] = audioread(fullFileName);
   %soundsc(x, Fs)
-  step = fix(5*Fs/1000);     # one spectral slice every 5 ms
-  window = fix(20*Fs/1000);  # 40 ms data window
+  step = fix(400.0*Fs/1000);     # one spectral slice every 5 ms
+  window = fix(500.0*Fs/1000);  # 40 ms data window
     
   fftn = 2^nextpow2(window); # next highest power of 2
   [S, f, t] = specgram(x, fftn, Fs, window, window-step);

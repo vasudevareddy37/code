@@ -11,11 +11,10 @@ from sklearn.svm import SVC
 start = timeit.default_timer()
 
 NUM_TRIALS = 1
-
 ## Loading the  dataset
-x = np.load("/home/mainampati/thesis/X_original_o.npy")
-y = np.load("/home/mainampati/thesis/y_berlin_o.npy")
-group = np.load("/home/mainampati/thesis/group.npy") 
+x = np.load("/home/mainampati/thesis/emo_db/spectro_db3Re/spectro_db3E.npy")
+y = np.load("/home/mainampati/thesis/emo_db/spectro_db3Re/emodbArousal.npy")
+group = np.load("/home/mainampati/thesis/emo_db/spectro_db3Re/gruop.npy") 
 
 # analysing gruop data
 ## unique, counts = np.unique(group, return_counts=True)
@@ -26,8 +25,8 @@ group = np.load("/home/mainampati/thesis/group.npy")
 x_scaled = x / 255
 
 # Set up possible values of parameters to optimize over
-p_grid = {"C": [1, 10],
-          "gamma": [0.01, 0.01]}
+p_grid = {"C": [0.1, 1, 10, 100],
+          "gamma": [1, 0.01, 0.001]}
 
 # We will use a Support Vector Classifier with "rbf" kernel
 svm = SVC(kernel="rbf")
@@ -61,10 +60,10 @@ for i in range(NUM_TRIALS):
         ## for train, test in logo.split(x_scaled[trainval], y[trainval], groupval)
         ## print "number of inner splits %s" % logo.get_n_splits(groups = groupval)
         ## inner_group = groupval[train]
-        ## inner_cv = logo.split(x_scaled[trainval], y[trainval], groups=groupval)
+        #inner_cv = logo.split(x_scaled[trainval], y[trainval], groups=groupval)
        
         clf = GridSearchCV(estimator= svm, param_grid= p_grid, cv= 3, 
-            scoring= 'recall_macro', return_train_score= False)
+            scoring= 'recall', return_train_score= False)
         clf.fit(x_scaled[trainval], y[trainval])
         
         bestScore.append(clf.best_score_)
@@ -77,6 +76,13 @@ for i in range(NUM_TRIALS):
 
 stop = timeit.default_timer()
 print("***** total  programm excution time = %0.3f min" % ((stop - start) / 60.0))
+
+print "final average score on database is"
+finalScore = loopScore.mean() * 100
+std = loopScore.std() * 100
+print ("final mean score is: %s and standard deviation is %s" % (finalScore, std))
+
+
 
 
 
